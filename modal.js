@@ -14,6 +14,7 @@ const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close")
 const validFormBtn = document.querySelector(".btn-submit")
 const submitBtn = document.querySelector(".btn-submit")
+const form = document.getElementsByName("reserve")
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -110,14 +111,14 @@ const isCondGenChecked = () => {
 }
 
 // validation à l'envoie
-const isFormValid = (e) => {
+const isFormValid = () => {
   if(isFirstNameValid() && isLastNameValid() && isEmailValid() && isCompetNumberValid() && isOneCheckboxChecked() && isCondGenChecked()) {
     console.log('formulaire validé')
   } else {
-    e.preventDefault()
     console.log('formulaire avec une erreuer')
   }
 }
 submitBtn.addEventListener('click', (e) => {
-  isFormValid(e)
+  e.preventDefault()
+  isFormValid()
 })
