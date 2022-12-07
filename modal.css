@@ -527,3 +527,20 @@ footer {
   }
 }
 
+
+/* modif appliquer pour fix les issue */
+.to-show-when-submited {
+  display: none;
+  height: 100%;
+  color: white;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+}
+.to-show-when-submited span {
+  font-size: 42px;
+  text-align: center;
+}
+.to-show-when-submited button {
+  margin-top: 60%;
+}

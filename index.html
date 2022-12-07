@@ -56,10 +56,16 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
+            <!-- ajout du content a afficher apres submit-->
+            <div class="to-show-when-submited">
+              <span class="valid-title">Merci pour votre inscription</span>
+              <button class="btn-submit btn-to-close-modal">Fermer</button>
+            </div>
             <form
               name="reserve"
               action="index.html"
               method="get"
+              id="formModalGameOn"
               onsubmit="return validate();"
             >
               <div

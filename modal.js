@@ -15,7 +15,8 @@ const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close")
 const validFormBtn = document.querySelector(".btn-submit")
 const submitBtn = document.querySelector(".btn-submit")
-const form = document.getElementsByName("reserve")
+const form = document.getElementById("formModalGameOn")
+const toShowWhenSubmited = document.querySelector('.to-show-when-submited')
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -50,6 +51,9 @@ function launchModal() {
 
 // close modal form
 closeBtn.addEventListener('click', () => {
+  modalbg.style.display = "none"
+})
+document.querySelector('.btn-to-close-modal').addEventListener('click', () => {
   modalbg.style.display = "none"
 })
 
@@ -192,23 +196,33 @@ const isCondGenChecked = () => {
 }
 
 // validation à l'envoie
-const isFormValid = (e) => {
+const isFormValid = () => {
   if(isFirstNameValid() && isLastNameValid() && isEmailValid() && isBirthDateValid() && isCompetNumberValid() && isOneCheckboxChecked() && isCondGenChecked()) {
     console.log('formulaire validé')
+    return true
   } else {
     console.log('formulaire avec une erreuer')
-  }
-}
-const validate = () => {
-  if(isFirstNameValid() && isLastNameValid() && isEmailValid() && isBirthDateValid() && isCompetNumberValid() && isOneCheckboxChecked() && isCondGenChecked()) {
-    console.log('formulaire validé')
-    modalBdy.style.visibility = "0"
-    alert('validation')
-  } else {
     return false
   }
 }
-// submitBtn.addEventListener('click', (e) => {
-//   e.preventDefault()
-//   isFormValid()
-// })
+// const validate = () => {
+//   if(isFirstNameValid() && isLastNameValid() && isEmailValid() && isBirthDateValid() && isCompetNumberValid() && isOneCheckboxChecked() && isCondGenChecked()) {
+//     console.log('formulaire validé')
+//     modalBdy.style.visibility = "0"
+//     alert('validation')
+//   } else {
+//     return false
+//   }
+// }
+
+// utilisez une vent listener sur le formulaire au submit et non pas au click
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+  if(isFormValid()) {
+    form.style.display = "none"
+    modalBdy.style.height = "85vh"
+    toShowWhenSubmited.style.display = "flex"
+  } else {
+    return false
+  }
+})
