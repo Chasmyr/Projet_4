@@ -10,6 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const modalBdy = document.querySelector('.modal-body')
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close")
 const validFormBtn = document.querySelector(".btn-submit")
@@ -191,14 +192,23 @@ const isCondGenChecked = () => {
 }
 
 // validation à l'envoie
-const isFormValid = () => {
+const isFormValid = (e) => {
   if(isFirstNameValid() && isLastNameValid() && isEmailValid() && isBirthDateValid() && isCompetNumberValid() && isOneCheckboxChecked() && isCondGenChecked()) {
     console.log('formulaire validé')
   } else {
     console.log('formulaire avec une erreuer')
   }
 }
-submitBtn.addEventListener('click', (e) => {
-  e.preventDefault()
-  isFormValid()
-})
+const validate = () => {
+  if(isFirstNameValid() && isLastNameValid() && isEmailValid() && isBirthDateValid() && isCompetNumberValid() && isOneCheckboxChecked() && isCondGenChecked()) {
+    console.log('formulaire validé')
+    modalBdy.style.visibility = "0"
+    alert('validation')
+  } else {
+    return false
+  }
+}
+// submitBtn.addEventListener('click', (e) => {
+//   e.preventDefault()
+//   isFormValid()
+// })
