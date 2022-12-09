@@ -66,62 +66,56 @@
               action="index.html"
               method="get"
               id="formModalGameOn"
-              onsubmit="return validate();"
+              onsubmit=""
             >
               <div
-                class="formData">
-                <label for="first" id="firstLabel">Prénom</label><br>
+                class="formData" id="firstNameData">
+                <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
-                  required
                 /><br>
               </div>
               <div
-                class="formData">
-                <label for="last" id="lastLabel">Nom</label><br>
+                class="formData" id="lastNameData">
+                <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
-                  minlength="2"
-                  required
                 /><br>
               </div>
               <div
-                class="formData">
-                <label for="email" id="emailLabel">E-mail</label><br>
+                class="formData" id="emailData">
+                <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
-                  required
                 /><br>
               </div>
               <div
-                class="formData">
-                <label for="birthdate" id="dateLabel">Date de naissance</label><br>
+                class="formData" id="dateData">
+                <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  required
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" id="competNumberData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required value="0">
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
-              <p class="text-label" id="checkBoxGroupLabel">A quel tournoi souhaitez-vous participer cette année ?</p>
+              <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData" id="competData">
                 <input
                   class="checkbox-input checkbox-group"
                   type="radio"
@@ -191,16 +185,15 @@
               </div>
 
               <div
-                class="formData">
+                class="formData" id="condGenData">
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
                   checked
-                  required
                 />
                 <label class="checkbox2-label" for="checkbox1" required>
-                  <span class="checkbox-icon condGenIcon"></span>
+                  <span class="checkbox-icon"></span>
                   <span id="condGenLabel">J'ai lu et accepté les conditions d'utilisation.</span>
                 </label>
                 <br>

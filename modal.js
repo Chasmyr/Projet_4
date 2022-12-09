@@ -17,6 +17,13 @@ const validFormBtn = document.querySelector(".btn-submit")
 const submitBtn = document.querySelector(".btn-submit")
 const form = document.getElementById("formModalGameOn")
 const toShowWhenSubmited = document.querySelector('.to-show-when-submited')
+const firstNameData = document.getElementById("firstNameData")
+const lastNameData = document.getElementById("lastNameData")
+const emailData = document.getElementById("emailData")
+const dateData = document.getElementById("dateData")
+const competNumberData = document.getElementById("competNumberData")
+const competData = document.getElementById("competData")
+const condGenData = document.getElementById("condGenData")
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -24,29 +31,10 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-  // reset le style si le formulaire est fermé / ouvert
-  // reset style du prénom
-  firstName.style.border = "none"
-  firstLabel.style.color = "white"
-  firstLabel.innerText = "Prénom"
-  // reset style du nom
-  lastName.style.border = "none"
-  lastLabel.style.color = "white"
-  lastLabel.innerText = "Nom"
-  // reset style de l'email
-  email.style.border = "none"
-  emailLabel.style.color = "white"
-  emailLabel.innerText = "E-mail"
-  // reset date de naissance
-  birthDate.style.border = "none"
-  dateLabel.style.color = "white"
-  dateLabel.innerText = "Date de naissance"
-  // reset label des options
-  checkBoxGroupLabel.style.color = "white"
-  checkBoxGroupLabel.innerText = "A quel tournoi souhaitez-vous participer cette année ?"
-  // reset conditions générales
-  condGenLabel.style.color = "white"
-  condGenLabel.innerText = "J'ai lu et accepté les conditions d'utilisation."
+  // ? reset le style pour ouvrir plusieurs fois la modal
+  form.style.display = "block"
+  modalBdy.style.height = "auto"
+  toShowWhenSubmited.style.display = "none"
 }
 
 // close modal form
@@ -62,19 +50,12 @@ document.querySelector('.btn-to-close-modal').addEventListener('click', () => {
 
 // input form elements
 const firstName = document.getElementById('first')
-const firstLabel = document.getElementById('firstLabel')
 const lastName = document.getElementById('last')
-const lastLabel = document.getElementById('lastLabel')
 const email = document.getElementById('email')
-const emailLabel = document.getElementById('emailLabel')
 const birthDate = document.getElementById('birthdate')
-const dateLabel = document.getElementById('dateLabel')
 const compet = document.getElementById('quantity')
 const checkbox = document.querySelectorAll('.checkbox-group')
-const checkBoxLabel = document.getElementById('checkBoxGroupLabel')
 const condGen = document.getElementById('checkbox1')
-const condGenIcon = document.querySelector('.condGenIcon')
-const condGenLabel = document.getElementById('condGenLabel')
 
 // RegExp
 const charaOnly = /^[A-Za-z ]+$/
@@ -82,70 +63,54 @@ const validEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\
 const numberOnly = /^\d+$/
 
 // validation du prénom
-firstName.addEventListener('focus', () => {
-  firstName.style.border = "none"
-  firstLabel.style.color = "white"
-  firstLabel.innerText = "Prénom"
-})
 const isFirstNameValid = () => {
   let toCheck = firstName.value
   if(toCheck.length >= 2 && charaOnly.test(toCheck)) {
+    firstNameData.setAttribute("data-error-visible", false)
     return true
   } else {
-    firstName.style.border = "3px solid red"
-    firstLabel.style.color = "red"
-    firstLabel.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
+    firstNameData.setAttribute("data-error-visible", true)
+    firstNameData.setAttribute("data-error", message="Veuillez entrer 2 caractères ou plus pour le champ du prénom.")
+    return false
   }
 }
 
 // validation du nom
-lastName.addEventListener('focus', () => {
-  lastName.style.border = "none"
-  lastLabel.style.color = "white"
-  lastLabel.innerText = "Nom"
-})
 const isLastNameValid = () => {
   let toCheck = lastName.value
   if(toCheck.length >= 2 && charaOnly.test(toCheck)) {
+    lastNameData.setAttribute("data-error-visible", false)
     return true
   } else {
-    lastName.style.border = "3px solid red"
-    lastLabel.style.color = "red"
-    lastLabel.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+    lastNameData.setAttribute("data-error-visible", true)
+    lastNameData.setAttribute("data-error", message="Veuillez entrer 2 caractères ou plus pour le champ du nom.")
+    return false
   }
 }
 
 // validation email
-email.addEventListener('focus', () => {
-  email.style.border = "none"
-  emailLabel.style.color = "white"
-  emailLabel.innerText = "E-mail"
-})
 const isEmailValid = () => {
   let toCheck = email.value
   if(validEmail.test(toCheck)){
+    emailData.setAttribute("data-error-visible", false)
     return true
   } else {
-    email.style.border = "3px solid red"
-    emailLabel.style.color = "red"
-    emailLabel.innerText = "Vous devez entrer votre date de naissance."
+    emailData.setAttribute("data-error-visible", true)
+    emailData.setAttribute("data-error", message="Vous devez entrer votre date de naissance.")
+    return false
   }
 }
 
 // validation date
-birthDate.addEventListener('focus', () => {
-  birthDate.style.border = "none"
-  dateLabel.style.color = "white"
-  dateLabel.innerText = "Date de naissance"
-})
 const isBirthDateValid = () => {
   let toCheck = birthDate.value
   if(toCheck.length == 10) {
+    dateData.setAttribute("data-error-visible", false)
     return true
   } else {
-    birthDate.style.border = "3px solid border"
-    dateLabel.style.color = "red"
-    dateLabel.innerText = "Veuillez entrer une date valide."
+    dateData.setAttribute("data-error-visible", true)
+    dateData.setAttribute("data-error", message="Veuillez entrer une date valide.")
+    return false
   }
 }
 
@@ -153,67 +118,57 @@ const isBirthDateValid = () => {
 const isCompetNumberValid = () => {
   let toCheck = compet.value
   if(numberOnly.test(toCheck)) {
+    competNumberData.setAttribute("data-error-visible", false)
     return true
   } else {
-
+    competNumberData.setAttribute("data-error-visible", true)
+    competNumberData.setAttribute("data-error", message="Veuillez entrer un nombre valide.")
+    return false
   }
 }
 
 // validation btn radio
-for(let i =0; i < checkbox.length; i++) {
-  checkbox[i].addEventListener('click', () => {
-    checkBoxGroupLabel.style.color = "white"
-    checkBoxGroupLabel.innerText = "A quel tournoi souhaitez-vous participer cette année ?"
-  })
-}
 const isOneCheckboxChecked = () => {
   let isntChecked = 0
   for (let i = 0; i < checkbox.length; i++){
     if (checkbox[i].checked == true) {
+      competData.setAttribute("data-error-visible", false)
       return true 
     } else {
       isntChecked += 1
       if (isntChecked == 6) {
-        checkBoxGroupLabel.style.color = "red"
-        checkBoxGroupLabel.innerText = "Vous devez choisir une option."
+        competData.setAttribute("data-error-visible", true)
+        competData.setAttribute("data-error", message="Vous devez choisir une option.")
+        return false
       }
     }
   }
 }
 
 // validation condition générales
-condGenIcon.addEventListener('click', () => {
-  condGenLabel.style.color = "white"
-  condGenLabel.innerText = "J'ai lu et accepté les conditions d'utilisation."
-})
 const isCondGenChecked = () => {
   if(condGen.checked == true) {
+    condGenData.setAttribute("data-error-visible", false)
     return true
   } else {
-    condGenLabel.style.color = "red"
-    condGenLabel.innerText = "Vous devez vérifier que vous acceptez les termes et conditions."
+    condGenData.setAttribute("data-error-visible", true)
+    condGenData.setAttribute("data-error", message="Vous devez vérifier que vous acceptez les termes et conditions.")
+    return false
   }
 }
 
 // validation à l'envoie
 const isFormValid = () => {
-  if(isFirstNameValid() && isLastNameValid() && isEmailValid() && isBirthDateValid() && isCompetNumberValid() && isOneCheckboxChecked() && isCondGenChecked()) {
+  let a = [isFirstNameValid(), isLastNameValid(), isBirthDateValid(), isCompetNumberValid(), isOneCheckboxChecked(), isCondGenChecked()]
+  console.log(a)
+  if(!a.includes(false)) {
     console.log('formulaire validé')
     return true
   } else {
-    console.log('formulaire avec une erreuer')
+    console.log('formulaire avec une erreur')
     return false
   }
 }
-// const validate = () => {
-//   if(isFirstNameValid() && isLastNameValid() && isEmailValid() && isBirthDateValid() && isCompetNumberValid() && isOneCheckboxChecked() && isCondGenChecked()) {
-//     console.log('formulaire validé')
-//     modalBdy.style.visibility = "0"
-//     alert('validation')
-//   } else {
-//     return false
-//   }
-// }
 
 // utilisez une vent listener sur le formulaire au submit et non pas au click
 form.addEventListener('submit', (e) => {
