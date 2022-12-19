@@ -68,7 +68,7 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -76,7 +76,7 @@ img {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -495,7 +495,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 55px;
     white-space: normal;
   }
   .hero-text {
@@ -543,4 +543,55 @@ footer {
 }
 .to-show-when-submited button {
   margin-top: 60%;
+}
+
+/* reponsive */
+@media screen and (max-width: 600px) {
+  .topnav {
+    margin: 20px 20px 0px;
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+  .logo-image {
+    width: 150px;
+  }
+  .hero-content {
+    padding-left: 0;
+    padding-right: 0;
+    min-width: auto;
+  }
+  .hero-headline {
+    font-size: 35px;
+    height: auto;
+  }
+  .hero-text {
+    font-size: 15px;
+    margin-top: 15px;
+  }
+  /* modal */
+  .content {
+    position: fixed;
+    height: 100vh;
+    margin-top: 50px;
+    max-width: none;
+  }
+  input {
+    padding: 2px;
+  }
+  label {
+    margin-bottom: 10px;
+  }
+  .modal-body {
+    margin: 5px auto;
+    padding: 10px 6%;
+  }
+  .text-control {
+    padding: 4px;
+    height: 40px;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 800px) {
+  .hero-headline {
+    font-size: 70px;
+  }
 }
