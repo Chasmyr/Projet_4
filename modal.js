@@ -92,7 +92,7 @@ const isEmailValid = () => {
     return true
   } else {
     emailData.setAttribute("data-error-visible", true)
-    emailData.setAttribute("data-error", message="Vous devez entrer votre date de naissance.")
+    emailData.setAttribute("data-error", message="Vous devez entrer votre adresse email.")
     return false
   }
 }
