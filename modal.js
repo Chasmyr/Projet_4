@@ -155,7 +155,7 @@ const isCondGenChecked = () => {
 
 // validation à l'envoie
 const isFormValid = () => {
-  let a = [isFirstNameValid(), isLastNameValid(), isBirthDateValid(), isCompetNumberValid(), isOneCheckboxChecked(), isCondGenChecked()]
+  let a = [isFirstNameValid(), isLastNameValid(), isEmailValid(), isBirthDateValid(), isCompetNumberValid(), isOneCheckboxChecked(), isCondGenChecked()]
   console.log(a)
   if(!a.includes(false)) {
     console.log('formulaire validé')
